@@ -28,7 +28,7 @@ class Button:
 		self.text = text
 		self.text_size = text_size
 		
-                # Set up the font that will be on top of the button
+                # Set up the text that will be on top of the button
 		self.font = pygame.font.SysFont(None, text_size)
 		self.screen_text = self.font.render(text, True, text_color)
 		self.text_rect = self.screen_text.get_rect()

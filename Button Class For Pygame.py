@@ -27,31 +27,33 @@ class Button:
 		self.hover_color = hover_color
 		self.text = text
 		self.text_size = text_size
-		
-                # Set up the text that will be on top of the button
+
+        # Set up the text that will be on top of the button
 		self.font = pygame.font.SysFont(None, text_size)
 		self.screen_text = self.font.render(text, True, text_color)
 		self.text_rect = self.screen_text.get_rect()
 		self.text_rect.center = (x+self.width/2, y+self.height/2)
 
-                # Draw the button and draw the text on the button
+        # Draw the button and draw the text on the button
 		pygame.draw.rect(screen, self.color, (self.x, self.y, self.width, self.height))
 		screen.blit(self.screen_text, self.text_rect)
-		
-        
+
 	def action(self, action = None):
 		# Get the mouse position and the button pressed
 		mouse = pygame.mouse.get_pos()
 		click = pygame.mouse.get_pressed()
-		
-                # Check if the mouse is inside the button
+
+        # Check if the mouse is inside the button
 		if self.x + self.width > mouse[0] > self.x and self.y + self.height > mouse[1] > self.y:
 			pygame.draw.rect(screen, self.hover_color, (self.x, self.y, self.width, self.height))
 			screen.blit(self.screen_text, self.text_rect)
-			
-                        # Check if left mouse button is clicked
+
+            # Check if left mouse button is clicked
 			if click[0] == 1:
 				action()
+	# Outline on the button
+	def outline(self, outline_color, outline_thickness):
+		pygame.draw.rect(screen, outline_color, (self.x, self.y, self.width, self.height), outline_thickness)
 
 def game_quit():
 	pygame.quit()
